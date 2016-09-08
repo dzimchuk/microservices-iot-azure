@@ -92,7 +92,7 @@ else
         If ($Result.OperationStatus -eq "Succeeded") {
             $Result | Out-String
             "Created new Storage Account '$StorageAccountName', in '$Location'"
-            Set-AzureRmCurrentStorageAccount -ResourceGroupName $ResourceGroup -StorageAccountName $StorageAccountName
+            Set-AzureRmCurrentStorageAccount -ResourceGroupName $ResourceGroup -Name $StorageAccountName
         } else {
             "Failed to create new Storage Account '$StorageAccountName'"
         }

@@ -58,6 +58,7 @@ Function Select-Subscription()
     Try
     {
         Select-AzureRmSubscription -SubscriptionName $Subscription
+        Select-AzureSubscription -SubscriptionName $Subscription
     }
     Catch
     {

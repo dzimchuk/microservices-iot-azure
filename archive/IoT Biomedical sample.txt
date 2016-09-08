@@ -1,0 +1,26 @@
+0. Add-AzureRmAccount + Add-AzureAccount
+We need both as Create-CloudService.ps1 uses ASM to create the service first (New-AzureService) and then moves it to the resource group
+
+0.5 Define variables
+$repo = "{your path}\microservices-iot-azure\archive\"
+$subscription = "Developer Program Benefit"
+$location = "West Europe"
+$prefix = "dzbio"
+$suffix = "dev"
+
+1. Provision shared resources (Storage account, DocumentDB and Redis):
+.\Provision.ps1 -Repo $repo -Subscription $subscription -AzureLocation $location -Prefix $prefix -Suffix $suffix
+
+Set-AzureRmCurrentStorageAccount -ResourceGroupName Storage_RG -Name dzbiostoragedev
+
+2. Collect connection info and put it in Include-ConnectionStrings.ps1
+
+3. Provision microservices
+.\01-Provision-ConfigM.ps1 -Repo $repo -Subscription $subscription -AzureLocation $location -Prefix $prefix -Suffix $suffix
+.\01-Provision-DeviceM.ps1 -Repo $repo -Subscription $subscription -AzureLocation $location -Prefix $prefix -Suffix $suffix
+.\01-Provision-ProfileM.ps1 -Repo $repo -Subscription $subscription -AzureLocation $location -Prefix $prefix -Suffix $suffix
+.\01-Provision-RefM.ps1 -Repo $repo -Subscription $subscription -AzureLocation $location -Prefix $prefix -Suffix $suffix
+
+4. Provision Biometrics service
+.\01-Provision-Biometrics.ps1 -Repo $repo -Subscription $subscription -AzureLocation $location -Prefix $prefix -Suffix $suffix
+
