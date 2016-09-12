@@ -129,7 +129,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $ResourceGroupName -ServerNa
 Start-Sleep -Seconds 60
 
 #create the Azure SQL Database
-New-AzureRmSqlDatabase -ResourceGroupName $ResourceGroupName -DatabaseName $SQLDatabaseName -Edition Standard -ServerName $SQLServerName -MaxSizeBytes 268435456000
+New-AzureRmSqlDatabase -ResourceGroupName $ResourceGroupName -DatabaseName $SQLDatabaseName -Edition Basis -ServerName $SQLServerName -MaxSizeBytes 268435456000
 Start-Sleep -Seconds 60
 
 $TcpIPAddress = Get-ExternalIPAddress
