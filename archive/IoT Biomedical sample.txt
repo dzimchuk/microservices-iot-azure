@@ -24,3 +24,7 @@ Set-AzureRmCurrentStorageAccount -ResourceGroupName Storage_RG -Name dzbiostorag
 4. Provision Biometrics service
 .\01-Provision-Biometrics.ps1 -Repo $repo -Subscription $subscription -AzureLocation $location -Prefix $prefix -Suffix $suffix
 
+5. Build (glitchy)
+.\02-Build-Wire.ps1 -repo $repo -configuration Debug
+.\02-Build-Store.ps1 -repo $repo -configuration Debug
+
